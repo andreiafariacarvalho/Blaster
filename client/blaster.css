@@ -1,0 +1,131 @@
+body {
+  padding-top: 70px;
+}
+#body_container {
+  min-width: 1000px;
+  margin: auto;
+}
+
+#nav_all_settings {
+  height: 35px;
+  position: fixed;
+  width: 850px;
+  z-index: 100;
+  top: 50px;
+  text-align: center;
+  vertical-align: middle;
+}
+#nav_all_settings tr td {
+  background-color: rgba(217, 237, 247, 0.95);
+  padding-left: 20px;
+  padding-right: 20px;
+  vertical-align: top;
+}
+
+h1 {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 500;
+}
+
+h2 {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 300;
+}
+.entity.array {
+  fill: #6060a0;
+}
+.entity.array:hover {
+  fill: #404080;
+}
+.entity.object {
+  fill: #a06060;
+}
+.entity.object:hover {
+  fill: #804040;
+}
+.entity.frame {
+  fill: #60a060;
+}
+.entity.frame:hover {
+  fill: #408040;
+}
+.row {
+  fill: white;
+}
+
+/* Settings for the visualization part */
+
+.visualizationSettings {
+  text-align: center;
+}
+.radio_buttons {
+  display: block;
+}
+#step_first_vis, #step_backward_vis, #step_forward_vis, #step_last_vis,
+#break_point_clear, #break_point_next,
+#voice_stop, #voice_replay {
+  font-size: 0.9em;
+  width: 80px;
+}
+#stepSlider_vis, #voice_volume {
+  width: 400px;
+  text-align: center;
+  margin: auto;
+}
+#all_settings {
+  background-color: rgba(217, 237, 247, 0.6);
+}
+#all_settings tr td {
+  border-color: rgba(217, 237, 247, 0.5);
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 5px;
+  vertical-align: top;
+}
+#volume_settings {
+  height: 40px;
+}
+
+table {
+  vertical-align: top;
+  width: 100%;
+}
+#vis_stack, #vis_heap {
+  background-color: #f0f0f0;
+  width: 100%;
+}
+.stack, .heap {
+  text-align: left;
+  vertical-align: middle;
+}
+.stack {
+  width: 50%;
+}
+.heap {
+  width: 100%;
+}
+
+#legend_green {
+  background-color: lightgreen;
+}
+
+#legend_red {
+  background-color: coral;
+}
+
+#written_illustration {
+  /*background-color: rgba(192, 192, 192, 0.3);*/
+  /*background-color: #d9edf7;*/
+  background-color: rgba(217, 237, 247, 0.6);
+  border-radius: 5px;
+  margin-right: 5px;
+  padding: 10px;
+}
+
+.volume_item {
+  display: inline-block;
+}
+
+.volume_img {
+  width: 30px;
+}

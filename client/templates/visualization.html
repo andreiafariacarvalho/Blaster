@@ -1,0 +1,182 @@
+<template name="visualization">
+    <table id="nav_all_settings">
+        <tr>
+            <td>
+                <!--<h4>Timeline</h4>-->
+                <button type="button" class="btn btn-primary" id="nav_step_first_vis" value="Click">◀︎◀︎</button>
+                <button type="button" class="btn btn-primary" id="nav_step_backward_vis" value="Click">◀︎</button>
+                <span id="nav_step_text_vis"></span>
+                <button type="button" class="btn btn-primary" id="nav_step_forward_vis" value="Click">▶︎</button>
+                <button type="button" class="btn btn-primary" id="nav_step_last_vis" value="Click">▶▶</button>
+            </td>
+            <td>
+                <!--<h4>Breakpoints</h4>-->
+                <button type="button" class="btn btn-primary" id="nav_break_point_clear" value="Click">Clear ✘</button>
+                <button type="button" class="btn btn-primary" id="nav_break_point_next" value="Click">Next ▶</button>
+            </td>
+            <td>
+                <!--<h4>Voice/Speech illustration</h4>-->
+                <div id="nav_volume_settings">
+                    <div class="volume_item">
+                        <button type="button" class="btn btn-primary" id="nav_voice_stop" value="Click">◼︎</button>
+                        <button type="button" class="btn btn-primary" id="nav_voice_replay" value="Click">⟳</button>
+                    </div>
+                    <div class="volume_item">
+                        <img src="VolumeMute.png" class="volume_img" id="nav_volume_mute">
+                    </div>
+                    <div class="volume_item">
+                        <input type="range" min="0" max="10" value="5" id="nav_voice_volume" style="height: 30px; width: 100px;">
+                    </div>
+                    <div class="volume_item">
+                        <img src="VolumeHigh.png" class="volume_img" id="nav_volume_max">
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <h1>Slice-Based Execution Visualization</h1>
+
+    <!--TODO: change in a better explaination...-->
+    <p>
+        The slice-based execution visualization is divided into two parts: callstack and heap.
+        <br>
+        <br>
+        The callstack shows all frames.
+        The names of all frames are diplayed on the top of each table.
+        Each table consists on all local variables and their values of the corresponding frame.
+        Each row of each table represents one local variable, with the name on the left and its value on the right.
+        <br>
+        <br>
+        The heap shows all objects.
+        The class name of all objects are displayed on the top of each table.
+        Each table consists on all fields and their values of the corresponding object.
+        Each row of each table represents one object field, with the name on the left and its value on the right.
+        <br>
+        <br>
+        What can you do there?
+        It is possible to go through the history execution of the code.
+        There is the possibility to use breakpoints.
+        Each change of the timeline is followed by a visual and vocal illustration.
+    </p>
+
+    <h3>Notes</h3>
+    <p>
+        Legend of the source code display:
+    <ul>
+        <li>
+                    <span id="legend_green">
+                        Green</span>: it represents the line that has been executed at the chosen step and the callstack/heap visualization on the right side shows graphically the current situation.
+        </li>
+        <li>
+                    <span id="legend_red">
+                        Red</span>: it represents the line that will be executed as next step.
+            In case it is not displayed, it means the line of the next step is still the current.
+        </li>
+    </ul>
+    </p>
+
+    <!--<h2>Mock Example</h2>-->
+
+    <!--<h3>Settings</h3>-->
+
+    <form class="visualizationSettings">
+        <table id="all_settings">
+            <tr>
+                <td style="width: 50%;">
+                    <h4>Timeline</h4>
+                    <button type="button" class="btn btn-primary" id="step_first_vis" value="Click">◀︎◀︎ First</button>
+                    <button type="button" class="btn btn-primary" id="step_backward_vis" value="Click">◀︎ Back</button>
+                    <span id="step_text_vis"></span>
+                    <button type="button" class="btn btn-primary" id="step_forward_vis" value="Click">Forward ▶︎</button>
+                    <button type="button" class="btn btn-primary" id="step_last_vis" value="Click">Last ▶▶</button>
+                    <input type="range" min="0" max="0" value="0" id="stepSlider_vis" style="height: 30px;">
+                </td>
+                <td>
+                    <h4>Breakpoints</h4>
+                    <button type="button" class="btn btn-primary" id="break_point_clear" value="Click">Clear ✘</button>
+                    <button type="button" class="btn btn-primary" id="break_point_next" value="Click">Next ▶</button>
+                </td>
+                <td id="voice_illustration">
+                    <h4>Vocal illustration</h4>
+                    <button type="button" class="btn btn-primary" id="voice_stop" value="Click">Stop ◼︎</button>
+                    <button type="button" class="btn btn-primary" id="voice_replay" value="Click">Replay ⟳</button>
+                    <br>
+                    <div id="volume_settings">
+                        <div class="volume_item">
+                            <img src="VolumeMute.png" class="volume_img" id="volume_mute">
+                        </div>
+                        <div class="volume_item">
+                            <input type="range" min="0" max="10" value="5" id="voice_volume" style="height: 30px; width: 200px;">
+                        </div>
+                        <div class="volume_item">
+                            <img src="VolumeHigh.png" class="volume_img" id="volume_max">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <table id="table_vis">
+        <tr>
+            <td style="vertical-align: top; width: 50%;">
+                <p id="source-info"></p>
+                <p>
+                    <textarea id="source-code" class="createExportRunImportJob"  >// no step selected</textarea>
+                </p>
+                <p id="text_changes">
+                    <button type="button" class="btn btn-primary" id="text_edit" value="Click">Edit</button>
+                    <button type="button" class="btn btn-primary" id="text_save" value="Click">Submit</button>
+                </p>
+                <p id="written_illustration">
+                    <u>Illustration:</u> -
+                </p>
+            </td>
+            <td style="width: 100%; vertical-align: top;">
+                <table class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <th class="stack">
+                            <p>
+                                CALL STACK
+                            </p>
+                        </th>
+                        <th class="heap">
+                            <p>
+                                HEAP
+                            </p>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody id="vis_arrows">
+                    <tr>
+                        <td style="width: 50%;">
+                            <svg id="vis_stack"></svg>
+                        </td>
+                        <td style="width: 100%;">
+                            <svg id="vis_heap"></svg>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Background Information</h2>
+    <p>
+        The visualization is created using <a href="http://d3js.org/">D3.js</a>.
+        The data is loaded from the file <a href="../../public/data.json">data.json</a>.
+    </p>
+    <p>
+        The source code is rendered by <a href="http://codemirror.net/">CodeMirror</a>.
+        It is loaded from whatever file the corresponding program point in the JSON refers to.
+    </p>
+    <p>
+        A more advanced way would be to write the backend
+        (e.g., using <a href="http://nodejs.org/">node.js</a>
+        to generate the data on the fly).
+        An even more advanced way would be to write the entire thing in <a href="http://meteor.com/">meteor</a>,
+        to get a highly interactive and responsive frontend.
+    </p>
+</template>

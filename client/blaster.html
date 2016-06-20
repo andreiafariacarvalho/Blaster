@@ -1,0 +1,42 @@
+<head>
+    <!-- load Ubuntu font from Google -->
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:300,500' rel='stylesheet' type='text/css'>
+    <meta charset="utf-8">
+    <title>Slice-Based Execution Visualization</title>
+    <!-- load CodeMirror source code editor -->
+    <script type="text/javascript" href="lib/codemirror.js"></script>
+    <script type="text/css" href="lib/codemirror.css"></script>
+    <script type="text/javascript" href="mode/clike/clike.js"></script>
+    <!-- load D3.js library -->
+    <script type="text/javascript" src="https://d3js.org/d3.v3.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
+    <script type="text/css" href="blaster.css"></script>
+  <title>Blaster</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          <img alt="Brand" src="BlastLogo.png" height="20px">
+        </a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+    			{{> loginButtons}}
+    		</ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container" id="body_container">
+    {{#if currentUser}}
+        {{> visualization}}
+    {{else}}
+      {{> hello}}
+    {{/if}}
+  </div>
+</body>
