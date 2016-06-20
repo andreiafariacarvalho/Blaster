@@ -1082,7 +1082,6 @@ function getAbsoluteBoundingRect(element) {
  * @returns {{}} - a new JSON object representing the current state of stack/heap of the code
  */
 function getJSONStackHeap(d, time) {
-    console.log("----------------------------------------------------");
     var j = {};
     j.stack = [];
     j.heap = [];

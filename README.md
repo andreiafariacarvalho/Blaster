@@ -16,8 +16,7 @@ Blaster is a Meteor-based app based on [BLAST](http://sape.inf.usi.ch/blast).
 
 ### Idea ###
 
-A user uploads a Java application including some test cases (e.g., as a zip file)
-through this Blaster web site.
+A user uploads a Java application including some test cases through this Blaster web site.
 A Blaster worker runs the test cases on some server, on top of BLAST,
 producing comprehensive traces of all executed bytecodes.
 The user can then use the Blaster web site to query and visualize those traces.
