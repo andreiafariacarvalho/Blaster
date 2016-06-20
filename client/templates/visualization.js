@@ -1092,7 +1092,7 @@ function getJSONStackHeap(d, time) {
             break;
         }
         // text/voice illustration
-        if(d[index].action) {
+        if (d[index].action) {
             j.illustration = d[index].action;
         } else {
             j.illustration = d[index].name;
@@ -1116,6 +1116,8 @@ function getJSONStackHeap(d, time) {
                 }
             }
             frameToRemove = "main";
+        } else if(d[index].name == "UNTRACED_DEFINER") {
+            j = getJSONStackHeap_helperForObjects(j, d[index].object);
         } else if(d[index].activation.name != "UNTRACED") {
             // *************** STACK ***************
             var newFrame = {
