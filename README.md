@@ -1,2 +1,0 @@
-# Blaster
-Bachelor project: BLASTER
